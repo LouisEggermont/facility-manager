@@ -11,7 +11,10 @@
   "compilerOptions": {
     "noEmit": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
-
+    // Nuxt ui, to enable auto-completion in your vite.config.ts
+    "paths": {
+      "#build/ui": ["./node_modules/@nuxt/ui/.nuxt/ui"]
+    },
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "types": ["node"]
