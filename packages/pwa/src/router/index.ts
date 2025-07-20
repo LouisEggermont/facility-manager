@@ -1,23 +1,35 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import {
+  createRouter,
+  createWebHistory,
+  type Router,
+  type RouteRecordRaw,
+} from 'vue-router'
+// import HomeView from '../views/HomeView.vue'
 
-const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: HomeView,
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
-    },
-  ],
+// ROUTES
+const routes: RouteRecordRaw[] = [
+  {
+    path: '/login',
+    component: () => import('@/views/auth/LoginScreen.vue'),
+  },
+  {
+    path: '/birds',
+    component: () => import('@/views/birds/IndexView.vue'),
+  },
+  {
+    path: '/birds/:slug',
+    component: () => import('@/views/birds/_slug.vue'),
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    component: () => import('@/views/NotFound.vue'),
+  },
+]
+
+// THE ROUTER ITSELF
+const router: Router = createRouter({
+  history: createWebHistory(),
+  routes,
 })
 
 export default router
