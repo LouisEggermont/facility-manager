@@ -1,9 +1,15 @@
 import { createApp, type App as VueApp } from 'vue'
-import router from './router'
 import App from './App.vue'
+import router from './router'
+import useFirebase from './composables/useFirebase'
+
+const { restoreUser } = useFirebase()
 
 const app: VueApp = createApp(App)
 
-app.use(router)
+;(async () => {
+  await restoreUser()
 
-app.mount('#app')
+  app.use(router)
+  app.mount('#app')
+})()

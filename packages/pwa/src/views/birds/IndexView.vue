@@ -5,6 +5,4 @@
   </div>
 </template>
 
-<script setup lang="ts">
-// optional setup logic here
-</script>
+<script setup lang="ts"></script>
