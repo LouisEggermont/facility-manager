@@ -13,6 +13,15 @@ export class BuildingsService {
     private buildingRepository: MongoRepository<Building>,
   ) {}
 
+  // Function for seeding
+  saveAll(buildings: Building[]): Promise<Building[]> {
+    return this.buildingRepository.save(buildings)
+  }
+
+  truncate(): Promise<void> {
+    return this.buildingRepository.clear()
+  }
+
   // // eslint-disable-next-line @typescript-eslint/no-unused-vars
   // create(createBuildingInput: CreateBuildingInput) {
   //   return 'This action adds a new building'

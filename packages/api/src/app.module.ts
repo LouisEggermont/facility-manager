@@ -5,6 +5,7 @@ import { BuildingsModule } from './buildings/buildings.module'
 import { GraphQLModule } from '@nestjs/graphql'
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
 import { TypeOrmModule } from '@nestjs/typeorm'
+import { SeedModule } from './seed/seed.module'
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { TypeOrmModule } from '@nestjs/typeorm'
       // useNewUrlParser: true,
       // useUnifiedTopology: true, // Disable deprecated warnings
     }),
+    SeedModule,
   ],
   controllers: [AppController],
   providers: [AppService],
