@@ -10,33 +10,47 @@ import {
 // ROUTES
 const routes: RouteRecordRaw[] = [
   {
-    path: '/login',
-    component: () => import('@/views/auth/LoginScreen.vue'),
+    path: '/auth',
+    component: () => import('@/components/wrappers/AuthWrapper.vue'),
     meta: { preventLoggedIn: true },
+    children: [
+      {
+        path: 'login',
+        name: 'login',
+        component: () => import('@/views/auth/LoginScreen.vue'),
+      },
+      {
+        path: 'register',
+        name: 'register',
+        component: () => import('@/views/auth/RegisterScreen.vue'),
+      },
+    ],
   },
   {
-    path: '/logout',
-    component: () => import('@/views/auth/LogoutScreen.vue'),
-    // meta: { preventLoggedIn: true },
-  },
-  {
-    path: '/register',
-    component: () => import('@/views/auth/RegisterScreen.vue'),
-    // meta: { preventLoggedIn: true },
+    path: '/myaccount',
+    name: 'myaccount',
+    component: () => import('@/views/MyAccount.vue'),
   },
   {
     path: '/birds',
+    name: 'birds',
     component: () => import('@/views/birds/IndexView.vue'),
     meta: { shouldBeAuthenticated: true },
   },
   {
     path: '/birds/:slug',
+    name: 'birdbyslug',
     component: () => import('@/views/birds/_slug.vue'),
     meta: { shouldBeAuthenticated: true },
   },
   {
     path: '/:pathMatch(.*)*',
     component: () => import('@/views/NotFound.vue'),
+  },
+  {
+    path: '/',
+    name: 'home',
+    component: () => import('@/views/HomeScreen.vue'),
   },
 ]
 
@@ -50,9 +64,9 @@ router.beforeEach(async (to, from, next) => {
   const { firebaseUser } = useFirebase()
 
   if (to.meta.shouldBeAuthenticated && !firebaseUser.value) {
-    next({ path: '/login' })
+    next({ name: 'login' })
   } else if (to.meta.preventLoggedIn && firebaseUser.value) {
-    next({ path: '/' })
+    next({ name: 'home' })
   } else {
     next()
   }

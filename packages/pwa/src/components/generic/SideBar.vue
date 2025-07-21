@@ -88,13 +88,13 @@ const navigationItems = computed<NavigationMenuItem[]>(() => [
   {
     label: 'Home',
     icon: 'i-heroicons-home-20-solid',
-    to: '/',
+    to: { name: 'home' },
     active: route.path === '/',
   },
   {
     label: 'Birds',
     icon: 'i-lucide-feather',
-    to: '/birds',
+    to: { name: 'birds' },
     active: route.path.startsWith('/birds'),
   },
   {
@@ -107,13 +107,13 @@ const navigationItems = computed<NavigationMenuItem[]>(() => [
     ? {
         label: collapsed.value ? undefined : 'Account',
         icon: 'i-heroicons-user-20-solid',
-        to: '/myaccount',
+        to: { name: 'myaccount' },
         active: route.path.startsWith('/myaccount'),
       }
     : {
         label: collapsed.value ? undefined : 'Login',
         icon: 'i-heroicons-key-20-solid',
-        to: '/login',
+        to: { name: 'login' },
         active: route.path.startsWith('/login'),
       },
 ])
