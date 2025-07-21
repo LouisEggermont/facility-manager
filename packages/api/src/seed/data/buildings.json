@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Campus Brugge Station",
+    "address": "Stationsplein 1, 8000 Brugge",
+    "description": "Hoofdgebouw van Howest met centrale administratie en auditoria."
+  },
+  {
+    "name": "Campus Kortrijk",
+    "address": "Graaf Karel de Goedelaan 5, 8500 Kortrijk",
+    "description": "IT-campus van Howest, huisvest de opleiding Toegepaste Informatica."
+  },
+  {
+    "name": "Campus Sint-Jorisstraat",
+    "address": "Sint-Jorisstraat 71, 8000 Brugge",
+    "description": "Design en innovatie campus van Howest in het historische centrum van Brugge."
+  },
+  {
+    "name": "Campus The Level",
+    "address": "Marksesteenweg 58, 8500 Kortrijk",
+    "description": "Campus gericht op game development en creatieve technologieën."
+  },
+  {
+    "name": "Campus Oudenaarde",
+    "address": "Prins Leopoldstraat 39, 9700 Oudenaarde",
+    "description": "Kleinschalige campus voor specifieke opleidingen en praktijkgericht onderwijs."
+  },
+  {
+    "name": "Campus Brugge Station (Gebouw B)",
+    "address": "Stationsplein 3, 8000 Brugge",
+    "description": "Gebouw B van de Brugge campus, met extra praktijklokalen en labs."
+  }
+]
