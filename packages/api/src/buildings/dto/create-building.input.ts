@@ -8,6 +8,6 @@ export class CreateBuildingInput {
   @Field()
   address: string
 
-  @Field({ nullable: true })
+  @Field({ nullable: true, defaultValue: 'no description' })
   description?: string
 }

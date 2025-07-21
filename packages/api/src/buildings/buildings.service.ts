@@ -48,9 +48,35 @@ export class BuildingsService {
   //   return `This action returns a #${id} building`
   // }
   findOne(id: string) {
+    // EXTRA STEP check if id is a valid ObjectId
+    if (!ObjectId.isValid(id)) throw new Error('Invalid ObjectId')
+
     const objID = new ObjectId(id)
     return this.buildingRepository.findOneByOrFail({ id: objID })
   }
+
+  // EXTRA
+  async findOneByName(name: string): Promise<Building> {
+    const building = await this.buildingRepository.findOne({ where: { name } })
+    if (!building) {
+      throw new Error(`Building with name "${name}" not found`)
+    }
+    return building
+  }
+
+  // // EXTRA
+  // findBuildingsByCategory(category: string): Promise<Building[]> {
+  //   return this.buildingRepository.find({ where: { category } })
+  // }
+
+  // // EXTRA
+  // async incrementObservationsCount(buildingId: string): Promise<void> {
+  //   const building = await this.findOne(buildingId)
+  //   this.buildingRepository.update(
+  //     { id: buildingId },
+  //     { observations: building.observations + 1 },
+  //   )
+  // }
 
   // TODO: Remove the update en delete mutation in the resolver and the functions in the service.
 
