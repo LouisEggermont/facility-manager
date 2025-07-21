@@ -4,7 +4,36 @@
     :class="collapsed ? 'w-16' : 'w-64'"
   >
     <!-- User -->
-    <div class="p-4 border-b border-muted">user</div>
+    <!-- <div class="p-4 border-b border-muted">user</div> -->
+    <!-- User -->
+    <div class="p-4 border-b border-muted">
+      <RouterLink
+        class="block rounded focus:outline-none hover:bg-muted/80 py-2 px-3"
+        :to="firebaseUser ? '/myaccount' : '/login'"
+      >
+        <div v-if="firebaseUser" class="flex items-center gap-3">
+          <img
+            v-if="firebaseUser.photoURL"
+            :src="firebaseUser.photoURL"
+            alt="Profile picture"
+            class="h-8 w-8 rounded-full object-cover"
+          />
+          <div
+            v-else
+            class="rounded-full h-8 w-8 flex items-center justify-center bg-white text-muted border"
+          >
+            <span class="text-sm">👤</span>
+          </div>
+          <span v-if="!collapsed" class="text-sm font-medium">
+            {{ firebaseUser.email }}
+          </span>
+        </div>
+        <div v-else class="text-sm">
+          <span v-if="!collapsed">Login</span>
+          <span v-else>🔑</span>
+        </div>
+      </RouterLink>
+    </div>
 
     <!-- Navigation -->
     <div class="flex-1 p-4">
