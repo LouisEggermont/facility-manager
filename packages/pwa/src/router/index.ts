@@ -32,15 +32,15 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/views/MyAccount.vue'),
   },
   {
-    path: '/birds',
-    name: 'birds',
-    component: () => import('@/views/birds/IndexView.vue'),
+    path: '/buildings',
+    name: 'buildings',
+    component: () => import('@/views/buildings/IndexView.vue'),
     meta: { shouldBeAuthenticated: true },
   },
   {
-    path: '/birds/:slug',
-    name: 'birdbyslug',
-    component: () => import('@/views/birds/_slug.vue'),
+    path: '/buildings/:slug',
+    name: 'buildingbyslug',
+    component: () => import('@/views/buildings/_slug.vue'),
     meta: { shouldBeAuthenticated: true },
   },
   {

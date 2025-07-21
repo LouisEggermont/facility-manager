@@ -92,10 +92,10 @@ const navigationItems = computed<NavigationMenuItem[]>(() => [
     active: route.path === '/',
   },
   {
-    label: 'Birds',
+    label: 'Buildings',
     icon: 'i-lucide-feather',
-    to: { name: 'birds' },
-    active: route.path.startsWith('/birds'),
+    to: { name: 'buildings' },
+    active: route.path.startsWith('/buildings'),
   },
   {
     label: collapsed.value ? undefined : 'Observations',
