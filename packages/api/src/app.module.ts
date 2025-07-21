@@ -4,6 +4,7 @@ import { AppService } from './app.service'
 import { BuildingsModule } from './buildings/buildings.module'
 import { GraphQLModule } from '@nestjs/graphql'
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
+import { TypeOrmModule } from '@nestjs/typeorm'
 
 @Module({
   imports: [
@@ -12,6 +13,14 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
       autoSchemaFile: true,
     }),
     BuildingsModule,
+    TypeOrmModule.forRoot({
+      type: 'mongodb',
+      url: 'mongodb://localhost:27027/api',
+      entities: [__dirname + '/**/*.entity.{js,ts}'],
+      synchronize: true, // Careful with this in production
+      // useNewUrlParser: true,
+      // useUnifiedTopology: true, // Disable deprecated warnings
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],
