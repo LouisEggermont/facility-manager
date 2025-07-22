@@ -8,3 +8,12 @@ run api: npm run start:dev -w api
 run docker container: Use docker-compose up -d or the VS Code Docker extension to start the database. To check the database, I love to use MongoDB Compass
 
 seeding: npx nestjs-command seed:database:buildings & npx nestjs-command seed:reset:buildings
+
+for authentication of user with nestjs, download firebase project settings: Get a service account from the Firebase console: Project settings > Service accounts > Generate new private key: remame it to "firebase-project-settings.json" and add it to the /packages/api/secrets folder
+
+get bearer token from frontend: "window.firebase.default().firebaseUser.value.getIdToken()" in the browser console
+
+header of graphql playground :
+{
+"authorization": "Bearer REPLACEMEWITHTOKEN"
+}

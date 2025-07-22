@@ -3,6 +3,9 @@ import { BuildingsService } from './buildings.service'
 import { Building } from './entities/building.entity'
 import { CreateBuildingInput } from './dto/create-building.input'
 
+import { UseGuards } from '@nestjs/common'
+import { FirebaseGuard } from 'src/authentication/guards/firebase.guard'
+
 @Resolver(() => Building)
 export class BuildingsResolver {
   constructor(private readonly buildingsService: BuildingsService) {}
@@ -26,6 +29,7 @@ export class BuildingsResolver {
   //   return this.buildingsService.findAll();
   // }
   @Query(() => [Building], { name: 'buildings' })
+  @UseGuards(FirebaseGuard)
   findAll() {
     console.log('findAll')
     // return [

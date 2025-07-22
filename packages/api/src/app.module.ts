@@ -6,6 +6,9 @@ import { GraphQLModule } from '@nestjs/graphql'
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { SeedModule } from './seed/seed.module'
+import { IssuesModule } from './issues/issues.module'
+import { AuthenticationModule } from './authentication/authentication.module'
+import { ConfigModule } from '@nestjs/config'
 
 @Module({
   imports: [
@@ -13,6 +16,7 @@ import { SeedModule } from './seed/seed.module'
       driver: ApolloDriver,
       autoSchemaFile: true,
     }),
+    ConfigModule.forRoot(),
     BuildingsModule,
     TypeOrmModule.forRoot({
       type: 'mongodb',
@@ -23,6 +27,8 @@ import { SeedModule } from './seed/seed.module'
       // useUnifiedTopology: true, // Disable deprecated warnings
     }),
     SeedModule,
+    IssuesModule,
+    AuthenticationModule,
   ],
   controllers: [AppController],
   providers: [AppService],
