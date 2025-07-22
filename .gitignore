@@ -152,4 +152,9 @@ yarn-error.log
 auto-imports.d.ts
 components.d.ts
 
+
+# Firebase Admin Key
+packages/api/secrets/firebase-project-settings.json
+
+
 # End of https://www.toptal.com/developers/gitignore/api/node,vuejs
