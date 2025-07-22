@@ -53,6 +53,12 @@ export class IssuesResolver {
   // }
 
   @UseGuards(FirebaseGuard)
+  @Query(() => [Issue], { name: 'issues' }) // all issues
+  findAll(): Promise<Issue[]> {
+    return this.issuesService.findAll()
+  }
+
+  @UseGuards(FirebaseGuard)
   @Query(() => [Issue], { name: 'myissues' })
   findAllForCurrentUser(@CurrentFirebaseUser() user: UserRecord) {
     console.log('👀 Find all issues for user', user.uid)
