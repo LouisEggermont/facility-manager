@@ -38,6 +38,12 @@ const routes: RouteRecordRaw[] = [
     meta: { shouldBeAuthenticated: true },
   },
   {
+    path: '/issues',
+    name: 'issues',
+    component: () => import('@/views/issues/IndexView.vue'),
+    meta: { shouldBeAuthenticated: true },
+  },
+  {
     path: '/buildings/:slug',
     name: 'buildingbyslug',
     component: () => import('@/views/buildings/_slug.vue'),

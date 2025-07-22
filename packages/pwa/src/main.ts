@@ -10,6 +10,17 @@ import useFirebase from './composables/useFirebase'
 import { DefaultApolloClient } from '@vue/apollo-composable'
 import useGraphql from './composables/useGraphql'
 
+// expose the firebase instance globally to get access to it in the console // __firebase.firebaseUser.value.getIdToken().then(token => console.log('Bearer ' + token))
+const firebase = useFirebase()
+// Extend the Window interface to include __firebase
+declare global {
+  interface Window {
+    __firebase: ReturnType<typeof useFirebase>
+  }
+}
+
+window.__firebase = firebase
+
 const { restoreUser } = useFirebase()
 const { apolloClient } = useGraphql()
 

@@ -1,6 +1,6 @@
 import gql from 'graphql-tag'
 
-export const GET_ALL_ISSUES = gql`
+export const GET_ISSUES = gql`
   query {
     issues {
       id

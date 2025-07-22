@@ -11,7 +11,7 @@ seeding: npx nestjs-command seed:database:buildings & npx nestjs-command seed:re
 
 for authentication of user with nestjs, download firebase project settings: Get a service account from the Firebase console: Project settings > Service accounts > Generate new private key: remame it to "firebase-project-settings.json" and add it to the /packages/api/secrets folder
 
-get bearer token from frontend: "window.firebase.default().firebaseUser.value.getIdToken()" in the browser console
+get bearer token from frontend: "\_\_firebase.firebaseUser.value.getIdToken().then(token => console.log('Bearer ' + token))" in the browser console
 
 header of graphql playground :
 {

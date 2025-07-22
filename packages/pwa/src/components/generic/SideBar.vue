@@ -98,10 +98,10 @@ const navigationItems = computed<NavigationMenuItem[]>(() => [
     active: route.path.startsWith('/buildings'),
   },
   {
-    label: collapsed.value ? undefined : 'Observations',
+    label: collapsed.value ? undefined : 'Issues',
     icon: 'i-heroicons-eye-20-solid',
-    to: '/observations',
-    active: route.path.startsWith('/observations'),
+    to: '/issues',
+    active: route.path.startsWith('/issues'),
   },
   firebaseUser.value
     ? {
@@ -169,9 +169,9 @@ const items = computed<NavigationMenuItem[]>(() => {
     { label: 'Home', to: '/', active: route.path === '/' },
     { label: 'Birds', to: '/birds', active: route.path.startsWith('/birds') },
     {
-      label: 'Observations',
-      to: '/observations',
-      active: route.path.startsWith('/observations'),
+      label: 'Issues',
+      to: '/issues',
+      active: route.path.startsWith('/issues'),
     },
   ]
   const accountLink = firebaseUser.value
