@@ -1,1 +1,16 @@
-{"es":{"Key":"es","navigation.home":"Hogar","navigation.buildings":"Edificios","title.login":"Acceso","label.password":"Contraseña","label.email.address":"Dirección de correo electrónico","#REF!":"#REF!","label.register":"Hola, {user}","link.alreadyHaveAccount":"¿Ya tienes una cuenta?","":"#VALUE!","subtitle.login":"#VALUE!","subtitle.register":"#VALUE!"}}
+{
+  "es": {
+    "Key": "es",
+    "navigation.home": "Hogar",
+    "navigation.buildings": "Edificios",
+    "title.login": "Acceso",
+    "label.password": "Contraseña",
+    "label.email.address": "Dirección de correo electrónico",
+    "#REF!": "#REF!",
+    "label.register": "Hola, {user}",
+    "link.alreadyHaveAccount": "¿Ya tienes una cuenta?",
+    "": "#VALUE!",
+    "subtitle.login": "#VALUE!",
+    "subtitle.register": "#VALUE!"
+  }
+}

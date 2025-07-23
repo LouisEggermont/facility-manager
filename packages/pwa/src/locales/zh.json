@@ -1,1 +1,14 @@
-{"zh":{"Key":"zh","navigation.home":"家","navigation.buildings":"建筑","title.login":"登录","label.password":"密码","label.email.address":"电子邮件","#REF!":"#REF!","label.register":"嗨，{user}","link.alreadyHaveAccount":"已有账户？","":"#VALUE!"}}
+{
+  "zh": {
+    "Key": "zh",
+    "navigation.home": "家",
+    "navigation.buildings": "建筑",
+    "title.login": "登录",
+    "label.password": "密码",
+    "label.email.address": "电子邮件",
+    "#REF!": "#REF!",
+    "label.register": "嗨，{user}",
+    "link.alreadyHaveAccount": "已有账户？",
+    "": "#VALUE!"
+  }
+}

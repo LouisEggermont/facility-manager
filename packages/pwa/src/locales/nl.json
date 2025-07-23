@@ -1,1 +1,14 @@
-{"nl":{"Key":"nl","navigation.home":"Home","navigation.buildings":"Gebouwen","title.login":"Login","label.username":"Gebruikersnaam","label.email.address":"Email adres","label.language":"Taal","label.password":"Wachtwoord","label.register":"Registreer","link.alreadyHaveAccount":"Ik heb al een account"}}
+{
+  "nl": {
+    "Key": "nl",
+    "navigation.home": "Home",
+    "navigation.buildings": "Gebouwen",
+    "title.login": "Login",
+    "label.username": "Gebruikersnaam",
+    "label.email.address": "Email adres",
+    "label.language": "Taal",
+    "label.password": "Wachtwoord",
+    "label.register": "Registreer",
+    "link.alreadyHaveAccount": "Ik heb al een account"
+  }
+}

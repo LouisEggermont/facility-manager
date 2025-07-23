@@ -1,1 +1,14 @@
-{"en":{"Key":"en","navigation.home":"Home","navigation.buildings":"Buildings","title.login":"Login","label.username":"Username","label.email.address":"Email address","label.language":"Language","label.password":"Password","label.register":"Register","link.alreadyHaveAccount":"Already have an account?"}}
+{
+  "en": {
+    "Key": "en",
+    "navigation.home": "Home",
+    "navigation.buildings": "Buildings",
+    "title.login": "Login",
+    "label.username": "Username",
+    "label.email.address": "Email address",
+    "label.language": "Language",
+    "label.password": "Password",
+    "label.register": "Register",
+    "link.alreadyHaveAccount": "Already have an account?"
+  }
+}
