@@ -19,3 +19,4 @@ header of graphql playground :
 }
 
 credentials.json in i18n folder, see github issue #33
+sync the sheets i18n: npm run build -w i18n-export
