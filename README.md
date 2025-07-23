@@ -17,3 +17,5 @@ header of graphql playground :
 {
 "authorization": "Bearer REPLACEMEWITHTOKEN"
 }
+
+credentials.json in i18n folder, see github issue #33

@@ -157,5 +157,9 @@ components.d.ts
 packages/api/secrets/firebase-project-settings.json
 /secrets/
 
+# Google Cloud credentials
+credentials.json
+token.json
+
 
 # End of https://www.toptal.com/developers/gitignore/api/node,vuejs
