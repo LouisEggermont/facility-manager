@@ -1,9 +1,11 @@
 import { Injectable } from '@nestjs/common'
-import { App, cert, initializeApp } from 'firebase-admin/app'
+import {
+  App,
+  applicationDefault,
+  cert,
+  initializeApp,
+} from 'firebase-admin/app'
 import { Auth, getAuth } from 'firebase-admin/auth'
-
-// Import the service account key JSON file, did not work from the environment variable
-import serviceAccount from '../../../secrets/firebase-project-settings.json' // with `esModuleInterop` enabled
 
 @Injectable()
 export class FirebaseService {
@@ -11,9 +13,12 @@ export class FirebaseService {
 
   constructor() {
     console.log('🧪 Starting FirebaseService...')
+
+    const serviceAccount = require('../../../secrets/firebase-project-settings.json')
+
     this.firebaseApp = initializeApp({
       // import hard coded service account key
-      credential: cert(serviceAccount as any),
+      credential: cert(serviceAccount),
       // credential: applicationDefault(), // this should be the normal way of Environment variable GOOGLE_APPLICATION_CREDENTIALS, see issue #30
     })
 
