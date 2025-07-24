@@ -1,22 +1,16 @@
 <template>
-  <div class="min-h-screen bg-gray-50 dark:bg-gray-900 p-6">
+  <div class="min-h-screen p-6">
     <div class="max-w-2xl mx-auto">
       <!-- Page Header -->
       <div class="mb-8">
-        <h1 class="text-3xl font-bold text-gray-900 dark:text-white">
-          My Account
-        </h1>
-        <p class="mt-2 text-gray-600 dark:text-gray-400">
-          Manage your account settings and preferences
-        </p>
+        <h1 class="text-3xl font-bold">My Account</h1>
+        <p class="mt-2">Manage your account settings and preferences</p>
       </div>
 
       <!-- Account Information Card -->
       <UCard class="mb-6">
         <template #header>
-          <h2 class="text-xl font-semibold text-gray-900 dark:text-white">
-            Account Information
-          </h2>
+          <h2 class="text-xl font-semibold">Account Information</h2>
         </template>
 
         <div class="space-y-6">
@@ -40,22 +34,16 @@
               </div>
             </div>
             <div>
-              <h3 class="text-lg font-medium text-gray-900 dark:text-white">
+              <h3 class="text-lg font-medium">
                 {{ firebaseUser?.displayName || 'No name set' }}
               </h3>
-              <p class="text-sm text-gray-500 dark:text-gray-400">
-                Profile Picture
-              </p>
+              <p class="text-sm">Profile Picture</p>
             </div>
           </div>
 
           <!-- Name -->
           <div>
-            <label
-              class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-            >
-              Display Name
-            </label>
+            <label class="block text-sm font-medium mb-2"> Display Name </label>
             <UInput
               :value="firebaseUser?.displayName || ''"
               placeholder="No name set"
@@ -66,9 +54,7 @@
 
           <!-- Email -->
           <div>
-            <label
-              class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-            >
+            <label class="block text-sm font-medium mb-2">
               Email Address
             </label>
             <UInput
@@ -80,58 +66,22 @@
           </div>
 
           <!-- Language Selector -->
-          <!-- <div>
-            <UFormField :label="$t('label.language')">
-              <USelect
-                v-model="newUser.locale"
-                :items="mylocales"
-                name="locale"
-              />
-            </UFormField>
-
-            <USelect
-              v-model="selectedLocale"
-              :items="availableLocales"
-              :loading="isUpdatingLanguage"
-              @change="handleLanguageChange"
-              labe
-              class="w-full"
-            />
-          </div> -->
-
           <form @submit.prevent="">
-            <div class="mt-6">
-              <label
-                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                for="language"
-              >
-                {{ $t('label.language') }}
-              </label>
-              <select
-                name="language"
-                id="language"
-                @change="setLanguage"
-                v-model="locale"
-                class="block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-gray-900 dark:text-white focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
-              >
-                <option
-                  v-for="(value, key) in SUPPORTED_LOCALES"
-                  :value="key"
-                  :key="key"
-                >
-                  {{ value }}
-                </option>
-              </select>
+            <div>
+              <UFormField :label="$t('label.language')">
+                <USelect
+                  v-model="locale"
+                  :items="localeItems"
+                  name="locale"
+                  @change="setLanguage"
+                />
+              </UFormField>
             </div>
           </form>
 
           <!-- Account Created -->
           <div v-if="firebaseUser?.metadata?.creationTime">
-            <label
-              class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-            >
-              Member Since
-            </label>
+            <label class="block text-sm font-medium mb-2"> Member Since </label>
             <UInput
               :value="formatDate(firebaseUser.metadata.creationTime)"
               disabled
@@ -141,11 +91,7 @@
 
           <!-- Last Sign In -->
           <div v-if="firebaseUser?.metadata?.lastSignInTime">
-            <label
-              class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-            >
-              Last Sign In
-            </label>
+            <label class="block text-sm font-medium mb-2"> Last Sign In </label>
             <UInput
               :value="formatDate(firebaseUser.metadata.lastSignInTime)"
               disabled
@@ -158,21 +104,15 @@
       <!-- Account Actions Card -->
       <UCard>
         <template #header>
-          <h2 class="text-xl font-semibold text-gray-900 dark:text-white">
-            Account Actions
-          </h2>
+          <h2 class="text-xl font-semibold">Account Actions</h2>
         </template>
 
         <div class="space-y-4">
           <!-- Logout Button -->
           <div class="flex items-center justify-between">
             <div>
-              <h3 class="text-sm font-medium text-gray-900 dark:text-white">
-                Sign Out
-              </h3>
-              <p class="text-sm text-gray-500 dark:text-gray-400">
-                Sign out of your account on this device
-              </p>
+              <h3 class="text-sm font-medium">Sign Out</h3>
+              <p class="text-sm">Sign out of your account on this device</p>
             </div>
             <UButton
               color="error"
@@ -190,13 +130,11 @@
 
           <!-- Placeholder for future actions -->
           <div
-            class="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700"
+            class="flex items-center justify-between pt-4 border-t border-muted"
           >
             <div>
-              <h3 class="text-sm font-medium text-gray-900 dark:text-white">
-                Account Settings
-              </h3>
-              <p class="text-sm text-gray-500 dark:text-gray-400">
+              <h3 class="text-sm font-medium">Account Settings</h3>
+              <p class="text-sm">
                 Update your profile information and preferences
               </p>
             </div>
@@ -215,7 +153,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import useFirebase from '@/composables/useFirebase'
 import useLanguage from '@/composables/useLanguage'
@@ -252,6 +190,11 @@ const setLanguage = () => {
     console.log('Locale updated')
   })
 }
+
+// Compute the available locales for the USelect input
+const localeItems = computed(() =>
+  Object.entries(SUPPORTED_LOCALES).map(([value, label]) => ({ value, label })),
+)
 
 const handleLogout = async () => {
   try {
