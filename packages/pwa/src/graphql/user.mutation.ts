@@ -10,3 +10,13 @@ export const ADD_NEW_USER = gql`
     }
   }
 `
+
+export const UPDATE_USER_LOCALE = gql`
+  mutation updateUser($myinput: UpdateUserInput!) {
+    updateUser(updateUserInput: $myinput) {
+      id
+      uid
+      locale
+    }
+  }
+`

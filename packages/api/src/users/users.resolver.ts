@@ -7,6 +7,9 @@ import { UseGuards } from '@nestjs/common'
 import { FirebaseGuard } from 'src/authentication/guards/firebase.guard'
 import { CurrentFirebaseUser } from 'src/decorators/user.decorator'
 import { UserInfo } from 'firebase-admin/auth'
+import { AllowedRoles } from './decorators/roles.decorator'
+import { RolesGuard } from './guards/roles.guard'
+import { UpdateUserInput } from './dto/update-user.input'
 
 @Resolver(() => User)
 export class UsersResolver {
@@ -64,6 +67,32 @@ export class UsersResolver {
   // updateUser(@Args('updateUserInput') updateUserInput: UpdateUserInput) {
   //   return this.usersService.update(updateUserInput.id, updateUserInput)
   // }
+
+  @AllowedRoles(Role.USER, Role.ADMIN)
+  @UseGuards(FirebaseGuard, RolesGuard)
+  @Mutation(() => User)
+  async updateUser(
+    @Args('updateUserInput') updateUserInput: UpdateUserInput,
+    @CurrentFirebaseUser() user: UserInfo,
+  ) {
+    // Get the role of the user
+    const userRole = await this.usersService.findOneByFirebaseUid(user.uid)
+    if (userRole && userRole.role === Role.USER) {
+      if (updateUserInput.uid !== user.uid) {
+        throw new Error(
+          'User not authorized to update user. You can only update your own user account.',
+        )
+      }
+      // You can only update your own user account, but only the locale field.
+      return this.usersService.updateLocale(user.uid, updateUserInput.locale)
+    } else if (userRole && userRole.role === Role.ADMIN) {
+      // TODO: Implement the logic for admins to update any user account.
+      // Admins can update any user account.
+      throw new Error('Still to be implemented for Admins')
+    } else {
+      throw new Error('No userRole found')
+    }
+  }
 
   @Mutation(() => User)
   removeUser(@Args('id', { type: () => Int }) id: number) {

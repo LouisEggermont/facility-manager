@@ -5,8 +5,8 @@ export default () => {
   const SUPPORTED_LOCALES = {
     en: 'en',
     nl: 'nl',
-    zh: 'zh',
-    es: 'es',
+    // zh: 'zh',
+    // es: 'es',
   }
   const loadMessages = async (locale: string) => {
     if (locale in SUPPORTED_LOCALES) {

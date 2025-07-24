@@ -79,6 +79,52 @@
             />
           </div>
 
+          <!-- Language Selector -->
+          <!-- <div>
+            <UFormField :label="$t('label.language')">
+              <USelect
+                v-model="newUser.locale"
+                :items="mylocales"
+                name="locale"
+              />
+            </UFormField>
+
+            <USelect
+              v-model="selectedLocale"
+              :items="availableLocales"
+              :loading="isUpdatingLanguage"
+              @change="handleLanguageChange"
+              labe
+              class="w-full"
+            />
+          </div> -->
+
+          <form @submit.prevent="">
+            <div class="mt-6">
+              <label
+                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                for="language"
+              >
+                {{ $t('label.language') }}
+              </label>
+              <select
+                name="language"
+                id="language"
+                @change="setLanguage"
+                v-model="locale"
+                class="block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-gray-900 dark:text-white focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
+              >
+                <option
+                  v-for="(value, key) in SUPPORTED_LOCALES"
+                  :value="key"
+                  :key="key"
+                >
+                  {{ value }}
+                </option>
+              </select>
+            </div>
+          </form>
+
           <!-- Account Created -->
           <div v-if="firebaseUser?.metadata?.creationTime">
             <label
@@ -172,10 +218,16 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import useFirebase from '@/composables/useFirebase'
+import useLanguage from '@/composables/useLanguage'
+import { useMutation } from '@vue/apollo-composable'
+import { UPDATE_USER_LOCALE } from '@/graphql/user.mutation'
 
 const router = useRouter()
 const { firebaseUser, logout } = useFirebase()
 const isLoggingOut = ref(false)
+
+const { SUPPORTED_LOCALES, locale, setLocale } = useLanguage()
+const { mutate: updateUserLocaleMutation } = useMutation(UPDATE_USER_LOCALE)
 
 const formatDate = (dateString: string) => {
   return new Date(dateString).toLocaleDateString('en-US', {
@@ -184,6 +236,20 @@ const formatDate = (dateString: string) => {
     day: 'numeric',
     hour: '2-digit',
     minute: '2-digit',
+  })
+}
+
+const setLanguage = () => {
+  console.log(locale.value)
+  setLocale(locale.value) // Save in the composable
+  // Update the customUser in the database
+  updateUserLocaleMutation({
+    myinput: {
+      uid: firebaseUser?.value?.uid,
+      locale: locale.value,
+    },
+  }).then(() => {
+    console.log('Locale updated')
   })
 }
 

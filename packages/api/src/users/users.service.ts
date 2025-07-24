@@ -49,6 +49,21 @@ export class UsersService {
   //   return `This action updates a #${id} user`
   // }
 
+  async updateLocale(uid: string, locale: string) {
+    const user = await this.userRepository.findOneBy({
+      where: { uid: uid },
+    })
+    if (!user) {
+      throw new Error('User not found')
+    }
+
+    if (locale) {
+      user.locale = locale
+    }
+
+    return this.userRepository.save(user)
+  }
+
   remove(id: number) {
     return `This action removes a #${id} user`
   }
