@@ -36,11 +36,16 @@ import type { AuthError } from 'firebase/auth'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
+import useLanguage from '@/composables/useLanguage'
+import useCustomUser from '@/composables/useCustomUser'
+
 export default {
   setup() {
     // Composables
     const { login, firebaseUser } = useFirebase()
+    const { setLocale } = useLanguage()
     const { replace } = useRouter()
+    const { restoreCustomUser, customUser } = useCustomUser()
 
     // Logic
     const loginCredentials = ref({
@@ -54,7 +59,12 @@ export default {
       login(loginCredentials.value.email, loginCredentials.value.password)
         .then(() => {
           // During debugging you can leave this out
-          replace('/')
+          restoreCustomUser().then(() => {
+            if (customUser.value?.locale) {
+              setLocale(customUser.value.locale)
+            }
+            replace('/')
+          })
         })
         .catch((err: AuthError) => {
           error.value = err.message

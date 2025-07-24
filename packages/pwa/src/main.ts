@@ -10,19 +10,21 @@ import useFirebase from './composables/useFirebase'
 import { DefaultApolloClient } from '@vue/apollo-composable'
 import useGraphql from './composables/useGraphql'
 import { createI18n } from 'vue-i18n'
+import useCustomUser from './composables/useCustomUser'
 
 // expose the firebase instance globally to get access to it in the console // __firebase.firebaseUser.value.getIdToken().then(token => console.log('Bearer ' + token))
-const firebase = useFirebase()
-// Extend the Window interface to include __firebase
-declare global {
-  interface Window {
-    __firebase: ReturnType<typeof useFirebase>
-  }
-}
+// const firebase = useFirebase()
+// // Extend the Window interface to include __firebase
+// declare global {
+//   interface Window {
+//     __firebase: ReturnType<typeof useFirebase>
+//   }
+// }
 
-window.__firebase = firebase
+// window.__firebase = firebase
 
-const { restoreUser } = useFirebase()
+const { restoreUser, firebaseUser } = useFirebase()
+const { restoreCustomUser } = useCustomUser()
 const { apolloClient } = useGraphql()
 
 const i18n = createI18n({
@@ -52,7 +54,7 @@ const app: VueApp = createApp({
 
 ;(async () => {
   await restoreUser()
-
+  if (firebaseUser.value) await restoreCustomUser()
   app.use(i18n)
   app.use(router)
   app.use(ui)

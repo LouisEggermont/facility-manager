@@ -71,11 +71,15 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useMutation } from '@vue/apollo-composable'
 import { ADD_NEW_USER } from '@/graphql/user.mutation'
+import useCustomUser from '@/composables/useCustomUser'
+import useLanguage from '@/composables/useLanguage'
 
 export default {
   setup() {
     const { register } = useFirebase()
     const { replace } = useRouter()
+    const { customUser } = useCustomUser()
+    const { setLocale } = useLanguage()
 
     // const { mutate: addUserMutation, loading: addUserLoadingMutation } =
     const { mutate: addUserMutation } = useMutation(ADD_NEW_USER)
@@ -110,8 +114,10 @@ export default {
               role: 'USER',
             },
           })
-            .then(() => {
+            .then(result => {
               console.log('🎉 User created in our database')
+              customUser.value = result?.data.createOwnUseraccount // <------ Update the customUser with the new user
+              setLocale(result?.data.createOwnUseraccount.locale) // Set the locale in the language composable with the locale added in the database
               replace({ name: 'myaccount' })
             })
             .catch(err => {

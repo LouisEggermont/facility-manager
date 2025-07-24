@@ -25,7 +25,7 @@
             <span class="text-sm">👤</span>
           </div>
           <span v-if="!collapsed" class="text-sm font-medium">
-            {{ firebaseUser.email }}
+            {{ firebaseUser.email }} ({{ customUser?.role }})
           </span>
         </div>
         <div v-else class="text-sm">
@@ -79,20 +79,24 @@ import { useRoute } from 'vue-router'
 import useFirebase from '@/composables/useFirebase'
 import type { NavigationMenuItem } from '@nuxt/ui'
 import { version } from '../../../package.json'
+import useCustomUser from '@/composables/useCustomUser'
+import { useI18n } from 'vue-i18n'
 
 const route = useRoute()
 const collapsed = ref(false)
 const { firebaseUser } = useFirebase()
+const { customUser } = useCustomUser()
+const { t } = useI18n() // Add this line
 
 const navigationItems = computed<NavigationMenuItem[]>(() => [
   {
-    label: 'Home',
+    label: t('navigation.home'),
     icon: 'i-heroicons-home-20-solid',
     to: { name: 'home' },
     active: route.path === '/',
   },
   {
-    label: 'Buildings',
+    label: t('navigation.buildings'),
     icon: 'i-lucide-feather',
     to: { name: 'buildings' },
     active: route.path.startsWith('/buildings'),

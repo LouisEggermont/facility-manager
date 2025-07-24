@@ -39,6 +39,12 @@ export class UsersResolver {
     return this.usersService.create(createUserInput)
   }
 
+  @UseGuards(FirebaseGuard)
+  @Query(() => User, { name: 'ownUseraccount' })
+  ownUseraccount(@CurrentFirebaseUser() user: UserInfo) {
+    return this.usersService.findOneByFirebaseUid(user.uid)
+  }
+
   @Mutation(() => User)
   createUser(@Args('createUserInput') createUserInput: CreateUserInput) {
     return this.usersService.create(createUserInput)

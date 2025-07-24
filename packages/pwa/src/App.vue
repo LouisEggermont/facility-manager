@@ -13,12 +13,19 @@
 import useLanguage from './composables/useLanguage'
 import { RouterView } from 'vue-router'
 import AppHeader from '@/components/generic/SideBar.vue'
+import useCustomUser from './composables/useCustomUser'
+
+const { customUser } = useCustomUser()
 
 const { setLocale, SUPPORTED_LOCALES, locale } = useLanguage()
 // setLocale('nl')
-setLocale(
-  navigator.languages.find(locale =>
-    Object.keys(SUPPORTED_LOCALES).includes(locale),
-  ) ?? locale.value,
-)
+if (customUser.value?.locale) {
+  setLocale(customUser.value.locale)
+} else {
+  setLocale(
+    navigator.languages.find(locale =>
+      Object.keys(SUPPORTED_LOCALES).includes(locale),
+    ) ?? locale.value,
+  )
+}
 </script>
