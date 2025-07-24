@@ -5,6 +5,9 @@ import { CreateBuildingInput } from './dto/create-building.input'
 
 import { UseGuards } from '@nestjs/common'
 import { FirebaseGuard } from 'src/authentication/guards/firebase.guard'
+import { AllowedRoles } from 'src/users/decorators/roles.decorator'
+import { Role } from 'src/users/entities/user.entity'
+import { RolesGuard } from 'src/users/guards/roles.guard'
 
 @Resolver(() => Building)
 export class BuildingsResolver {
@@ -28,8 +31,11 @@ export class BuildingsResolver {
   // findAll() {
   //   return this.buildingsService.findAll();
   // }
+
+  @AllowedRoles(Role.ADMIN, Role.USER)
+  @UseGuards(FirebaseGuard, RolesGuard)
+  // @UseGuards(FirebaseGuard)
   @Query(() => [Building], { name: 'buildings' })
-  @UseGuards(FirebaseGuard)
   findAll() {
     console.log('findAll')
     // return [

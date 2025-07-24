@@ -27,7 +27,6 @@ export class FirebaseAuthStrategy extends PassportStrategy(
   private readonly logger = new Logger(FirebaseAuthStrategy.name)
 
   constructor(private readonly firebase: FirebaseService) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     super()
   }
 
