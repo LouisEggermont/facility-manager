@@ -3,7 +3,8 @@ import { BuildingsService } from 'src/buildings/buildings.service'
 import { Building } from 'src/buildings/entities/building.entity'
 
 // import * as buildings from './data/buildings.json' // set  "resolveJsonModule": true in tsconfig.json
-import buildings from './data/buildings.json'
+// import buildings from './data/buildings.json'
+const buildings = require('./data/buildings.json')
 
 @Injectable()
 export class SeedService {
@@ -11,11 +12,7 @@ export class SeedService {
 
   async addBuildingsFromJson(): Promise<Building[]> {
     const theBuildings: Building[] = []
-    for (const building of buildings as {
-      name: string
-      address: string
-      description?: string
-    }[]) {
+    for (const building of buildings) {
       const b = new Building()
       b.name = building.name
       b.address = building.address

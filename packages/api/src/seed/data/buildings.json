@@ -1,32 +1,68 @@
 [
   {
     "name": "Campus Brugge Station",
-    "address": "Stationsplein 1, 8000 Brugge",
+    "address": {
+      "street": "Stationsplein",
+      "number": "1",
+      "city": "Brugge",
+      "zip": "8000",
+      "country": "Belgium"
+    },
     "description": "Hoofdgebouw van Howest met centrale administratie en auditoria."
   },
   {
     "name": "Campus Kortrijk",
-    "address": "Graaf Karel de Goedelaan 5, 8500 Kortrijk",
+    "address": {
+      "street": "Graaf Karel de Goedelaan",
+      "number": "5",
+      "city": "Kortrijk",
+      "zip": "8500",
+      "country": "Belgium"
+    },
     "description": "IT-campus van Howest, huisvest de opleiding Toegepaste Informatica."
   },
   {
     "name": "Campus Sint-Jorisstraat",
-    "address": "Sint-Jorisstraat 71, 8000 Brugge",
+    "address": {
+      "street": "Sint-Jorisstraat",
+      "number": "71",
+      "city": "Brugge",
+      "zip": "8000",
+      "country": "Belgium"
+    },
     "description": "Design en innovatie campus van Howest in het historische centrum van Brugge."
   },
   {
     "name": "Campus The Level",
-    "address": "Marksesteenweg 58, 8500 Kortrijk",
+    "address": {
+      "street": "Marksesteenweg",
+      "number": "58",
+      "city": "Kortrijk",
+      "zip": "8500",
+      "country": "Belgium"
+    },
     "description": "Campus gericht op game development en creatieve technologieën."
   },
   {
     "name": "Campus Oudenaarde",
-    "address": "Prins Leopoldstraat 39, 9700 Oudenaarde",
+    "address": {
+      "street": "Prins Leopoldstraat",
+      "number": "39",
+      "city": "Oudenaarde",
+      "zip": "9700",
+      "country": "Belgium"
+    },
     "description": "Kleinschalige campus voor specifieke opleidingen en praktijkgericht onderwijs."
   },
   {
     "name": "Campus Brugge Station (Gebouw B)",
-    "address": "Stationsplein 3, 8000 Brugge",
+    "address": {
+      "street": "Stationsplein",
+      "number": "3",
+      "city": "Brugge",
+      "zip": "8000",
+      "country": "Belgium"
+    },
     "description": "Gebouw B van de Brugge campus, met extra praktijklokalen en labs."
   }
 ]

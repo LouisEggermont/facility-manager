@@ -6,6 +6,7 @@ import {
   ObjectIdColumn,
   UpdateDateColumn,
 } from 'typeorm'
+import { Address } from './address.entity'
 
 //   @Column() & @Entity()  // Database link - Typeorm
 // @ObjectIdColumn() for automatically incremented ids in MongoDB.
@@ -25,8 +26,8 @@ export class Building {
   name: string
 
   @Column()
-  @Field()
-  address: string
+  @Field(() => Address)
+  address: Address
 
   @Column()
   @Field({ nullable: true })
