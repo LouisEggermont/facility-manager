@@ -32,6 +32,10 @@ export class Room {
   @Column()
   code: string
 
+  @Field({ nullable: true })
+  @Column({ nullable: true })
+  alias?: string
+
   @Field()
   @Column()
   buildingId: string

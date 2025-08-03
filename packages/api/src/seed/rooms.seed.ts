@@ -14,6 +14,7 @@ export class RoomsSeeder {
     for (const r of rooms) {
       const room = new Room()
       room.code = r.code
+      room.alias = r.alias
       room.buildingId = r.buildingId
       room.type = RoomType[r.type as keyof typeof RoomType]
       room.floor = r.floor
