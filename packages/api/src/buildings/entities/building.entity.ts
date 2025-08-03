@@ -3,6 +3,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  ObjectId,
   ObjectIdColumn,
   UpdateDateColumn,
 } from 'typeorm'
@@ -17,9 +18,18 @@ import { Address } from './address.entity'
 @Entity() // Database link - Typeorm
 @ObjectType()
 export class Building {
-  @ObjectIdColumn() // MongoDB uses ObjectId by default
+  // @ObjectIdColumn() // MongoDB uses ObjectId by default
+  // @Field(() => ID)
+  // // id: string
+  // id: ObjectId
+
+  @ObjectIdColumn()
+  _id: ObjectId
+
   @Field(() => ID)
-  id: string
+  get id(): string {
+    return this._id.toHexString()
+  }
 
   @Column()
   @Field()
