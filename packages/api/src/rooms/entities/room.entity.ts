@@ -1,8 +1,12 @@
 import { ObjectType, Field, Int, ID, registerEnumType } from '@nestjs/graphql'
-import { Column, CreateDateColumn, Entity, ObjectIdColumn } from 'typeorm'
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  Index,
+  ObjectIdColumn,
+} from 'typeorm'
 import { ChecklistItem } from './checkListItem.entity'
-import { ObjectId } from 'mongodb'
-import { register } from 'module'
 
 export enum RoomType {
   CLASSROOM = 'CLASSROOM',
@@ -18,6 +22,7 @@ registerEnumType(RoomType, {
 
 @ObjectType()
 @Entity()
+@Index(['buildingId', 'code'], { unique: true }) // Ensure unique combination of buildingId and code
 export class Room {
   @ObjectIdColumn() // Database link - TypeORM
   @Field(() => ID) // GraphQL

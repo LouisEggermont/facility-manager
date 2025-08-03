@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common'
+import { ConflictException, Injectable } from '@nestjs/common'
 import { CreateRoomInput } from './dto/create-room.input'
 import { UpdateRoomInput } from './dto/update-room.input'
 import { InjectRepository } from '@nestjs/typeorm'
@@ -12,12 +12,30 @@ export class RoomsService {
     private readonly roomRepo: MongoRepository<Room>,
   ) {}
 
+  // Function for seeding
+  saveAll(rooms: Room[]): Promise<Room[]> {
+    return this.roomRepo.save(rooms)
+  }
+
+  truncate(): Promise<void> {
+    return this.roomRepo.clear()
+  }
+
   // create(createRoomInput: CreateRoomInput) {
   //   return 'This action adds a new room'
   // }
   async create(input: CreateRoomInput): Promise<Room> {
-    const room = this.roomRepo.create(input)
-    return await this.roomRepo.save(room)
+    try {
+      const room = this.roomRepo.create(input)
+      return await this.roomRepo.save(room)
+    } catch (error) {
+      if (error?.code === 11000) {
+        throw new ConflictException(
+          `Room code "${input.code}" already exists in this building`,
+        )
+      }
+      throw error
+    }
   }
 
   findAll() {

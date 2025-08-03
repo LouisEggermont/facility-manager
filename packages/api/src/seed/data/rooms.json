@@ -1,0 +1,19 @@
+[
+  {
+    "code": "B.2.14",
+    "buildingId": "64f1e3e15c8e8e3f72e437a1",
+    "type": "CLASSROOM",
+    "floor": 2,
+    "checklistItems": [
+      { "label": "Lights off", "severity": "LOW" },
+      { "label": "Door locked", "severity": "HIGH" }
+    ]
+  },
+  {
+    "code": "B.3.15",
+    "buildingId": "64f1e3e15c8e8e3f72e437a2",
+    "type": "LAB",
+    "floor": 3,
+    "checklistItems": [{ "label": "Projector off", "severity": "MEDIUM" }]
+  }
+]
