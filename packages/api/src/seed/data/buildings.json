@@ -1,69 +1,67 @@
 [
   {
-    "id": "64f1e3e15c8e8e3f72e437a1",
-    "name": "Campus Brugge Station",
+    "id": "64f1e3e15c8e8e3f72e437a2",
+    "name": "Campus Kortrijk Weide – The Level",
+    "code": "KWE.L",
     "address": {
-      "street": "Stationsplein",
-      "number": "1",
-      "city": "Brugge",
-      "zip": "8000",
-      "country": "Belgium"
-    },
-    "description": "Hoofdgebouw van Howest met centrale administratie en auditoria."
-  },
-  {
-    "name": "Campus Kortrijk",
-    "address": {
-      "street": "Graaf Karel de Goedelaan",
-      "number": "5",
-      "city": "Kortrijk",
+      "street": "Botenkopersstraat",
+      "number": "2",
       "zip": "8500",
-      "country": "Belgium"
-    },
-    "description": "IT-campus van Howest, huisvest de opleiding Toegepaste Informatica."
-  },
-  {
-    "name": "Campus Sint-Jorisstraat",
-    "address": {
-      "street": "Sint-Jorisstraat",
-      "number": "71",
-      "city": "Brugge",
-      "zip": "8000",
-      "country": "Belgium"
-    },
-    "description": "Design en innovatie campus van Howest in het historische centrum van Brugge."
-  },
-  {
-    "name": "Campus The Level",
-    "address": {
-      "street": "Marksesteenweg",
-      "number": "58",
       "city": "Kortrijk",
+      "country": "Belgium"
+    },
+    "description": "Campus gericht op creatieve technologieën (The Level)"
+  },
+  {
+    "id": "64f1e3e15c8e8e3f72e437a4",
+    "name": "Campus Kortrijk Weide – The Penta",
+    "code": "KWE.P",
+    "address": {
+      "street": "Sint‑Martens‑Latemlaan",
+      "number": "1B",
       "zip": "8500",
+      "city": "Kortrijk",
       "country": "Belgium"
     },
-    "description": "Campus gericht op game development en creatieve technologieën."
+    "description": "Campus The Penta met praktijklokalen en labs"
   },
   {
-    "name": "Campus Oudenaarde",
+    "id": "64f1e3e15c8e8e3f72e437a5",
+    "name": "Campus Kortrijk Weide – The Core",
+    "code": "KWE.A",
     "address": {
-      "street": "Prins Leopoldstraat",
-      "number": "39",
-      "city": "Oudenaarde",
-      "zip": "9700",
+      "street": "Sint‑Martens‑Latemlaan",
+      "number": "2B",
+      "zip": "8500",
+      "city": "Kortrijk",
       "country": "Belgium"
     },
-    "description": "Kleinschalige campus voor specifieke opleidingen en praktijkgericht onderwijs."
+    "description": "Campus The Core: innovatie en onderwijs in Kortrijk"
   },
   {
-    "name": "Campus Brugge Station (Gebouw B)",
+    "id": "64f1e3e15c8e8e3f72e437a6",
+    "name": "Campus Kortrijk Buda",
+    "code": "KBU.F",
     "address": {
-      "street": "Stationsplein",
-      "number": "3",
-      "city": "Brugge",
-      "zip": "8000",
+      "street": "Dam",
+      "number": "2A",
+      "zip": "8500",
+      "city": "Kortrijk",
       "country": "Belgium"
     },
-    "description": "Gebouw B van de Brugge campus, met extra praktijklokalen en labs."
+    "description": "Campus Buda: stedelijke locatie nabij historisch centrum"
+  },
+  {
+    "id": "64f1e3e15c8e8e3f72e437a8",
+    "name": "Campus Kortrijk Weide – The Square",
+    "code": "KSQ.S",
+    "address": {
+      "street": "Sint-Martens-Latemlaan",
+      "number": "1A",
+      "zip": "8500",
+      "city": "Kortrijk",
+      "country": "Belgium"
+    },
+    "description": "Campus The Square: centrale ontmoetingsplaats en studentenvoorzieningen van Howest Kortrijk Weide"
   }
 ]

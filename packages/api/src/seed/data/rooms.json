@@ -1,19 +1,227 @@
 [
   {
-    "code": "B.2.14",
-    "buildingId": "64f1e3e15c8e8e3f72e437a1",
-    "type": "CLASSROOM",
-    "floor": 2,
+    "code": "KWE.P.-1.011",
+    "alias": "Auditorium",
+    "buildingId": "64f1e3e15c8e8e3f72e437a4",
+    "type": "AULA",
+    "floor": -1,
     "checklistItems": [
-      { "label": "Lights off", "severity": "LOW" },
-      { "label": "Door locked", "severity": "HIGH" }
+      {
+        "label": "Airco off",
+        "severity": "LOW"
+      },
+      {
+        "label": "Door locked",
+        "severity": "HIGH"
+      },
+      {
+        "label": "Whiteboard clean",
+        "severity": "LOW"
+      },
+      {
+        "label": "PCs shut down",
+        "severity": "MEDIUM"
+      },
+      {
+        "label": "Smartboard turned off",
+        "severity": "HIGH"
+      },
+      {
+        "label": "Smartboard turned off",
+        "severity": "HIGH"
+      },
+      {
+        "label": "Room ventilated",
+        "severity": "HIGH"
+      }
     ]
   },
   {
-    "code": "B.3.15",
-    "buildingId": "64f1e3e15c8e8e3f72e437a2",
-    "type": "LAB",
-    "floor": 3,
-    "checklistItems": [{ "label": "Projector off", "severity": "MEDIUM" }]
+    "code": "KWE.A.1.104",
+    "alias": null,
+    "buildingId": "64f1e3e15c8e8e3f72e437a5",
+    "type": "CLASSROOM",
+    "floor": 1,
+    "checklistItems": [
+      {
+        "label": "Airco off",
+        "severity": "LOW"
+      },
+      {
+        "label": "Whiteboard clean",
+        "severity": "LOW"
+      },
+      {
+        "label": "Lights off",
+        "severity": "LOW"
+      },
+      {
+        "label": "Windows closed",
+        "severity": "MEDIUM"
+      },
+      {
+        "label": "Blinds down",
+        "severity": "LOW"
+      },
+      {
+        "label": "PC screens off",
+        "severity": "LOW"
+      },
+      {
+        "label": "Printers off",
+        "severity": "LOW"
+      },
+      {
+        "label": "Curtains closed",
+        "severity": "LOW"
+      },
+      {
+        "label": "Smartboard turned off",
+        "severity": "MEDIUM"
+      },
+      {
+        "label": "Projector off",
+        "severity": "HIGH"
+      }
+    ]
+  },
+  {
+    "code": "KWE.A.2.302",
+    "alias": null,
+    "buildingId": "64f1e3e15c8e8e3f72e437a5",
+    "type": "CLASSROOM",
+    "floor": 2,
+    "checklistItems": [
+      {
+        "label": "Chairs in place",
+        "severity": "LOW"
+      },
+      {
+        "label": "Whiteboard clean",
+        "severity": "LOW"
+      },
+      {
+        "label": "PCs shut down",
+        "severity": "MEDIUM"
+      },
+      {
+        "label": "Lights off",
+        "severity": "LOW"
+      },
+      {
+        "label": "Printers off",
+        "severity": "LOW"
+      },
+      {
+        "label": "Airco remote stored",
+        "severity": "MEDIUM"
+      },
+      {
+        "label": "Projector off",
+        "severity": "LOW"
+      },
+      {
+        "label": "Smartboard turned off",
+        "severity": "HIGH"
+      }
+    ]
+  },
+  {
+    "code": "KWE.A.0.103",
+    "alias": "The Hub",
+    "buildingId": "64f1e3e15c8e8e3f72e437a5",
+    "type": "CLASSROOM",
+    "floor": 0,
+    "checklistItems": [
+      {
+        "label": "Cables stowed",
+        "severity": "LOW"
+      },
+      {
+        "label": "PCs shut down",
+        "severity": "MEDIUM"
+      },
+      {
+        "label": "Beamer off",
+        "severity": "MEDIUM"
+      },
+      {
+        "label": "Airco off",
+        "severity": "LOW"
+      },
+      {
+        "label": "Whiteboard clean",
+        "severity": "LOW"
+      },
+      {
+        "label": "Lights working",
+        "severity": "HIGH"
+      },
+      {
+        "label": "PC screens off",
+        "severity": "HIGH"
+      },
+      {
+        "label": "Airco remote stored",
+        "severity": "HIGH"
+      },
+      {
+        "label": "Trash emptied",
+        "severity": "HIGH"
+      },
+      {
+        "label": "Smartboard turned off",
+        "severity": "MEDIUM"
+      },
+      {
+        "label": "Curtains closed",
+        "severity": "LOW"
+      }
+    ]
+  },
+  {
+    "code": "KWE.A.2.301",
+    "alias": null,
+    "buildingId": "64f1e3e15c8e8e3f72e437a5",
+    "type": "CLASSROOM",
+    "floor": 2,
+    "checklistItems": [
+      {
+        "label": "Door locked",
+        "severity": "HIGH"
+      },
+      {
+        "label": "Whiteboard clean",
+        "severity": "LOW"
+      },
+      {
+        "label": "PCs shut down",
+        "severity": "MEDIUM"
+      },
+      {
+        "label": "Cables stowed",
+        "severity": "LOW"
+      },
+      {
+        "label": "Blinds down",
+        "severity": "HIGH"
+      },
+      {
+        "label": "Airco remote stored",
+        "severity": "MEDIUM"
+      },
+      {
+        "label": "Cables labeled",
+        "severity": "LOW"
+      },
+      {
+        "label": "Trash emptied",
+        "severity": "LOW"
+      },
+      {
+        "label": "Projector off",
+        "severity": "LOW"
+      }
+    ]
   }
 ]
