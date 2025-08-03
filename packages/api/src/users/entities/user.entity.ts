@@ -1,5 +1,5 @@
 // user.entity.ts
-import { ObjectType, Field, ID } from '@nestjs/graphql'
+import { ObjectType, Field, ID, registerEnumType } from '@nestjs/graphql'
 import {
   Column,
   CreateDateColumn,
@@ -12,6 +12,12 @@ export enum Role {
   ADMIN = 'ADMIN',
   USER = 'USER',
 }
+
+// TODO: consider using a more complex enum for roles
+// registerEnumType(Role, {
+//   name: 'Role',
+//   description: 'User role',
+// })
 
 @Entity()
 @ObjectType()
@@ -31,6 +37,8 @@ export class User {
   @Column({ default: Role.USER })
   @Field(() => String)
   role: Role
+  // @Field(() => Role) // with registerEnumType
+  // role: Role
 
   @CreateDateColumn({ type: 'timestamp', nullable: true })
   @Field({ nullable: true })
