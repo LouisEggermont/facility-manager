@@ -13,15 +13,15 @@ import { createI18n } from 'vue-i18n'
 import useCustomUser from './composables/useCustomUser'
 
 // expose the firebase instance globally to get access to it in the console // __firebase.firebaseUser.value.getIdToken().then(token => console.log('Bearer ' + token))
-// const firebase = useFirebase()
-// // Extend the Window interface to include __firebase
-// declare global {
-//   interface Window {
-//     __firebase: ReturnType<typeof useFirebase>
-//   }
-// }
+const firebase = useFirebase()
+// Extend the Window interface to include __firebase
+declare global {
+  interface Window {
+    __firebase: ReturnType<typeof useFirebase>
+  }
+}
 
-// window.__firebase = firebase
+window.__firebase = firebase
 
 const { restoreUser, firebaseUser } = useFirebase()
 const { restoreCustomUser } = useCustomUser()
