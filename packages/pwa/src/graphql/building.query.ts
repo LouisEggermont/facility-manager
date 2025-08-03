@@ -5,7 +5,6 @@ export const GET_BUILDINGS = gql`
     buildings {
       id
       name
-      address
       description
     }
   }
