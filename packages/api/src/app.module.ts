@@ -11,6 +11,7 @@ import { AuthenticationModule } from './authentication/authentication.module'
 import { ConfigModule } from '@nestjs/config'
 import { UsersModule } from './users/users.module'
 import { RoomsModule } from './rooms/rooms.module'
+import { InspectionRoundsModule } from './inspection-rounds/inspection-rounds.module'
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { RoomsModule } from './rooms/rooms.module'
     AuthenticationModule,
     UsersModule,
     RoomsModule,
+    InspectionRoundsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

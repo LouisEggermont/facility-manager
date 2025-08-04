@@ -38,6 +38,24 @@ export class RoomsService {
     }
   }
 
+  async findByCodesAndBuilding(
+    roomCodes: string[],
+    buildingId: string,
+  ): Promise<Room[]> {
+    return await this.roomRepository.find({
+      where: {
+        code: { $in: roomCodes },
+        buildingId: buildingId,
+      },
+    })
+  }
+
+  async findByBuilding(buildingId: string): Promise<Room[]> {
+    return await this.roomRepository.find({
+      where: { buildingId },
+    })
+  }
+
   findAll() {
     return `This action returns all rooms`
   }
