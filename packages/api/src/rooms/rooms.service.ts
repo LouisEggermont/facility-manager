@@ -9,16 +9,16 @@ import { MongoRepository } from 'typeorm'
 export class RoomsService {
   constructor(
     @InjectRepository(Room)
-    private readonly roomRepo: MongoRepository<Room>,
+    private readonly roomRepository: MongoRepository<Room>,
   ) {}
 
   // Function for seeding
   saveAll(rooms: Room[]): Promise<Room[]> {
-    return this.roomRepo.save(rooms)
+    return this.roomRepository.save(rooms)
   }
 
   truncate(): Promise<void> {
-    return this.roomRepo.clear()
+    return this.roomRepository.clear()
   }
 
   // create(createRoomInput: CreateRoomInput) {
@@ -26,8 +26,8 @@ export class RoomsService {
   // }
   async create(input: CreateRoomInput): Promise<Room> {
     try {
-      const room = this.roomRepo.create(input)
-      return await this.roomRepo.save(room)
+      const room = this.roomRepository.create(input)
+      return await this.roomRepository.save(room)
     } catch (error) {
       if (error?.code === 11000) {
         throw new ConflictException(
