@@ -11,11 +11,12 @@ import {
 } from './entities/inspection-round.entity'
 import { MongoRepository, ObjectId } from 'typeorm'
 import { RoomsService } from 'src/rooms/rooms.service'
+import { InjectRepository } from '@nestjs/typeorm'
 
 @Injectable()
 export class InspectionRoundsService {
   constructor(
-    @injectRepository(InspectionRound)
+    @InjectRepository(InspectionRound)
     private readonly inspectionRoundRepository: MongoRepository<InspectionRound>,
     private readonly roomsService: RoomsService,
   ) {}
@@ -106,13 +107,4 @@ export class InspectionRoundsService {
   remove(id: number) {
     return `This action removes a #${id} inspectionRound`
   }
-}
-function injectRepository(
-  InspectionRound: any,
-): (
-  target: typeof InspectionRoundsService,
-  propertyKey: undefined,
-  parameterIndex: 0,
-) => void {
-  throw new Error('Function not implemented.')
 }
