@@ -7,6 +7,7 @@ import {
   Entity,
   Index,
   ObjectIdColumn,
+  UpdateDateColumn,
 } from 'typeorm'
 
 export enum RoundStatus {
@@ -68,6 +69,10 @@ export class InspectionRound {
   @CreateDateColumn({ type: 'timestamp', nullable: true }) // Database link - Typeorm
   @Field({ nullable: true }) // GraphQL
   createdAt?: Date
+
+  @UpdateDateColumn({ type: 'timestamp', nullable: true }) // Add this
+  @Field({ nullable: true }) // Add this
+  updatedAt?: Date
 
   // Auto-generate name before saving
   @BeforeInsert()
