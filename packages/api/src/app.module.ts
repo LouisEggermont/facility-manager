@@ -12,6 +12,7 @@ import { ConfigModule } from '@nestjs/config'
 import { UsersModule } from './users/users.module'
 import { RoomsModule } from './rooms/rooms.module'
 import { InspectionRoundsModule } from './inspection-rounds/inspection-rounds.module'
+import { RoundRoomProgressModule } from './round-room-progress/round-room-progress.module'
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { InspectionRoundsModule } from './inspection-rounds/inspection-rounds.mo
     UsersModule,
     RoomsModule,
     InspectionRoundsModule,
+    RoundRoomProgressModule,
   ],
   controllers: [AppController],
   providers: [AppService],

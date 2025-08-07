@@ -1,17 +1,8 @@
 import { Field, ObjectType, registerEnumType } from '@nestjs/graphql'
+import { SeverityType } from 'src/common/severity-type.enum'
 import { Column } from 'typeorm'
 
-export enum SeverityType {
-  LOW = 'low',
-  MEDIUM = 'medium',
-  HIGH = 'high',
-}
-
-registerEnumType(SeverityType, {
-  name: 'SeverityType',
-  description: 'Severity level of the checklist item',
-})
-
+// TODO: change name of this file to checklist-item.entity.ts
 @ObjectType()
 export class ChecklistItem {
   @Column()
@@ -22,3 +13,4 @@ export class ChecklistItem {
   @Field(() => SeverityType)
   severity: SeverityType
 }
+export { SeverityType }

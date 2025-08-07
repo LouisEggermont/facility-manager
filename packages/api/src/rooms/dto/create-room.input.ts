@@ -1,8 +1,9 @@
 import { InputType, Int, Field } from '@nestjs/graphql'
 import { ObjectId } from 'mongodb'
 import { RoomType } from '../entities/room.entity'
-import { SeverityType } from '../entities/checkListItem.entity'
+
 import { IsOptional, IsString } from 'class-validator'
+import { SeverityType } from 'src/common/severity-type.enum'
 
 @InputType()
 export class CreateRoomInput {
