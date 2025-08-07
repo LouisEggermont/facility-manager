@@ -28,6 +28,8 @@ const { restoreCustomUser } = useCustomUser()
 const { apolloClient } = useGraphql()
 
 const i18n = createI18n({
+  // legacy: false allows using the Composition API style
+  legacy: false,
   locale: 'en', // default language
   fallbackLocale: 'en', // fallback if the key isn't available in the selected language
   // messages: {
