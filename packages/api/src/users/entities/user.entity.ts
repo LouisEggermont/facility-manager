@@ -14,7 +14,7 @@ import {
 // }
 
 export enum Role {
-  USER = 50, // Can create rounds, assign rooms
+  USER = 45, // Can create rounds, assign rooms
   STUDENT = 50, // Can only report issues (DEFAULT)
   TEACHER = 100, // Can report issues and do requests
   CONCIERGE = 200, // Can update assigned rounds
@@ -22,6 +22,7 @@ export enum Role {
   ADMIN = 800, // Can manage users, delete rounds
   SUPERADMIN = 900, // Can create/manage everything
 }
+// ALWAYS change the values in the PWA based on this enum -> role.interfae.ts
 
 // TODO: consider using a more complex enum for roles
 registerEnumType(Role, {
