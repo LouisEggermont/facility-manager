@@ -3,5 +3,5 @@
 </template>
 
 <script setup lang="ts">
-import { Role } from '@/interfaces/custom.user.interface' // Adjust the import path as needed
+import { Role } from '@/interfaces/role.interface' // Adjust the import path as needed
 </script>

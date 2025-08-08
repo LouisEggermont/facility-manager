@@ -1,10 +1,7 @@
 import useCustomUser from '@/composables/useCustomUser'
 import useFirebase from '@/composables/useFirebase'
-import {
-  canAccess,
-  hasMinimumRole,
-  Role,
-} from '@/interfaces/custom.user.interface'
+import { Role } from '@/interfaces/role.interface'
+import { canAccess, hasMinimumRole } from '@/utils/role.helpers'
 import {
   createRouter,
   createWebHistory,

@@ -1,7 +1,8 @@
-import { parseRole, type CustomUser } from '@/interfaces/custom.user.interface'
 import { ref } from 'vue'
 import { GET_OWN_USER_ACCOUNT } from '@/graphql/user.query'
 import useGraphql from './useGraphql'
+import type { CustomUser } from '@/interfaces/custom.user.interface'
+import { parseRole } from '@/utils/role.helpers'
 
 const customUser = ref<CustomUser | undefined>(undefined)
 const isLoaded = ref(false)

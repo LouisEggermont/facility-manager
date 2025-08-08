@@ -1,9 +1,6 @@
 import useCustomUser from '@/composables/useCustomUser'
-import {
-  hasMinimumRole,
-  canAccess,
-  Role,
-} from '@/interfaces/custom.user.interface'
+import type { Role } from '@/interfaces/role.interface'
+import { canAccess, hasMinimumRole } from '@/utils/role.helpers'
 
 type RoleBinding =
   | Role
