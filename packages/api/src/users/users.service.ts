@@ -67,4 +67,13 @@ export class UsersService {
   remove(id: number) {
     return `This action removes a #${id} user`
   }
+
+  // Seeding
+  async saveAll(users: User[]): Promise<User[]> {
+    return this.userRepository.save(users)
+  }
+
+  async truncate(): Promise<void> {
+    await this.userRepository.clear()
+  }
 }

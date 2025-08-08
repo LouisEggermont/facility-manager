@@ -5,9 +5,11 @@ import { DatabaseSeedCommand } from './seed.command'
 import { BuildingsSeeder } from './buildings.seed'
 import { RoomsSeeder } from './rooms.seed'
 import { RoomsModule } from 'src/rooms/rooms.module'
+import { UsersSeeder } from './users.seed'
+import { UsersModule } from 'src/users/users.module'
 
 @Module({
-  imports: [BuildingsModule, RoomsModule, CommandModule],
-  providers: [BuildingsSeeder, RoomsSeeder, DatabaseSeedCommand],
+  imports: [BuildingsModule, RoomsModule, UsersModule, CommandModule],
+  providers: [BuildingsSeeder, RoomsSeeder, UsersSeeder, DatabaseSeedCommand],
 })
 export class SeedModule {}
