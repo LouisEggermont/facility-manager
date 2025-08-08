@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "env.d.ts",
+    "auto-imports.d.ts",
+    "components.d.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "*.config.ts", // for vite.config.ts
+    "*.ts", // catch root-level ts files like env.d.ts
+    "src/**/*.d.ts" // just in case you have type files there
+  ]
+}

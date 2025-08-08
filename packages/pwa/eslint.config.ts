@@ -15,6 +15,16 @@ export default defineConfigWithVueTs(
   {
     name: 'app/files-to-lint',
     files: ['**/*.{ts,mts,tsx,vue}'],
+    languageOptions: {
+      parserOptions: {
+        project: './tsconfig.eslint.json',
+        tsconfigRootDir: new URL('.', import.meta.url).pathname,
+        extraFileExtensions: ['.vue'], // ✅ ADD THIS LINE
+      },
+    },
+  },
+  {
+    ignores: ['auto-imports.d.ts', 'components.d.ts'],
   },
 
   globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
