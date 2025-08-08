@@ -14,6 +14,6 @@ export class CreateUserInput {
   locale?: string
 
   @IsEnum(Role)
-  @Field(() => String)
+  @Field(() => Role)
   role: Role
 }

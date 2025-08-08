@@ -8,16 +8,26 @@ import {
   UpdateDateColumn,
 } from 'typeorm'
 
+// export enum Role {
+//   ADMIN = 'ADMIN',
+//   USER = 'USER',
+// }
+
 export enum Role {
-  ADMIN = 'ADMIN',
-  USER = 'USER',
+  USER = 50, // Can create rounds, assign rooms
+  STUDENT = 50, // Can only report issues (DEFAULT)
+  TEACHER = 100, // Can report issues and do requests
+  CONCIERGE = 200, // Can update assigned rounds
+  FACILITY_MANAGER = 500, // Can create rounds, assign staff
+  ADMIN = 800, // Can manage users, delete rounds
+  SUPERADMIN = 900, // Can create/manage everything
 }
 
 // TODO: consider using a more complex enum for roles
-// registerEnumType(Role, {
-//   name: 'Role',
-//   description: 'User role',
-// })
+registerEnumType(Role, {
+  name: 'Role',
+  description: 'User role',
+})
 
 @Entity()
 @ObjectType()
@@ -35,7 +45,7 @@ export class User {
   locale?: string
 
   @Column({ default: Role.USER })
-  @Field(() => String)
+  @Field(() => Role)
   role: Role
   // @Field(() => Role) // with registerEnumType
   // role: Role

@@ -8,7 +8,9 @@ import { FirebaseGuard } from 'src/authentication/guards/firebase.guard'
 import { AllowedRoles } from 'src/users/decorators/roles.decorator'
 import { Role } from 'src/users/entities/user.entity'
 import { RolesGuard } from 'src/users/guards/roles.guard'
+import { MinRole } from 'src/decorators/min-role.decorator'
 
+@UseGuards(FirebaseGuard, RolesGuard)
 @Resolver(() => Building)
 export class BuildingsResolver {
   constructor(private readonly buildingsService: BuildingsService) {}
@@ -27,14 +29,7 @@ export class BuildingsResolver {
     return this.buildingsService.create(createBuildingInput)
   }
 
-  // @Query(() => [Building], { name: 'buildings' })
-  // findAll() {
-  //   return this.buildingsService.findAll();
-  // }
-
-  @AllowedRoles(Role.ADMIN, Role.USER)
-  @UseGuards(FirebaseGuard, RolesGuard)
-  // @UseGuards(FirebaseGuard)
+  @MinRole(Role.USER) // 50 and above
   @Query(() => [Building], { name: 'buildings' })
   findAll() {
     console.log('findAll')
