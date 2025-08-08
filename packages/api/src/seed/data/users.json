@@ -1,0 +1,51 @@
+[
+  {
+    "uid": "v7TFLTdmWddd5Gg7USGZMNoOHs73",
+    "email": "docent@howest.be",
+    "displayName": "Howest",
+    "locale": "en",
+    "role": "SUPERADMIN"
+  },
+  {
+    "uid": "kjCUDQJTtqcdeHzJXIicnz4RHws1",
+    "email": "admin@mail.com",
+    "displayName": "System Administrator",
+    "locale": "en",
+    "role": "SUPERADMIN"
+  },
+  {
+    "uid": "iSfUGiHU5oPTYOf6EFrz1MDKN0p2",
+    "email": "manager@mail.com",
+    "displayName": "Facility Manager",
+    "locale": "en",
+    "role": "FACILITY_MANAGER"
+  },
+  {
+    "uid": "U3MtNXWG3rOTMHq4QqfIWOgVblx1",
+    "email": "concierge@mail.com",
+    "displayName": "Building Concierge",
+    "locale": "en",
+    "role": "CONCIERGE"
+  },
+  {
+    "uid": "AWUn6ZSHPkRsKHvs7g4vHyOlTf93",
+    "email": "teacher@mail.com",
+    "displayName": "John Teacher",
+    "locale": "en",
+    "role": "TEACHER"
+  },
+  {
+    "uid": "3D80bG6BVvQ2lkDrdEcwygYzFC32",
+    "email": "student@mail.com",
+    "displayName": "Jane Student",
+    "locale": "en",
+    "role": "STUDENT"
+  },
+  {
+    "uid": "AuOZidwJTQQ4TYYhfJaAnWhg0cZ2",
+    "email": "user@mail.com",
+    "displayName": "Regular User",
+    "locale": "en",
+    "role": "USER"
+  }
+]
