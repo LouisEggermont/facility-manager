@@ -1,4 +1,10 @@
+import useCustomUser from '@/composables/useCustomUser'
 import useFirebase from '@/composables/useFirebase'
+import {
+  canAccess,
+  hasMinimumRole,
+  Role,
+} from '@/interfaces/custom.user.interface'
 import {
   createRouter,
   createWebHistory,
@@ -8,6 +14,8 @@ import {
 // import HomeView from '../views/HomeView.vue'
 
 // ROUTES
+//   requiredRole: Role.ADMIN,                // option 1
+//   allowedRoles: [Role.TEACHER, Role.FACILITY_MANAGER], // option 2
 const routes: RouteRecordRaw[] = [
   {
     path: '/auth',
@@ -35,7 +43,7 @@ const routes: RouteRecordRaw[] = [
     path: '/buildings',
     name: 'buildings',
     component: () => import('@/views/buildings/IndexView.vue'),
-    meta: { shouldBeAuthenticated: true },
+    meta: { shouldBeAuthenticated: true, requiredRole: Role.ADMIN },
   },
   {
     path: '/issues',
@@ -67,15 +75,46 @@ const router: Router = createRouter({
 })
 
 router.beforeEach(async (to, from, next) => {
-  const { firebaseUser } = useFirebase()
+  // const { firebaseUser } = useFirebase()
 
-  if (to.meta.shouldBeAuthenticated && !firebaseUser.value) {
-    next({ name: 'login' })
-  } else if (to.meta.preventLoggedIn && firebaseUser.value) {
-    next({ name: 'home' })
-  } else {
-    next()
+  // if (to.meta.shouldBeAuthenticated && !firebaseUser.value) {
+  //   next({ name: 'login' })
+  // } else if (to.meta.preventLoggedIn && firebaseUser.value) {
+  //   next({ name: 'home' })
+  // } else {
+  //   next()
+  // }
+
+  const { firebaseUser } = useFirebase()
+  const { customUser } = useCustomUser()
+
+  const requiresAuth = to.meta.shouldBeAuthenticated
+  const preventWhenLoggedIn = to.meta.preventLoggedIn
+  const requiredRole = to.meta.requiredRole as Role | undefined
+  const allowedRoles = to.meta.allowedRoles as Role[] | undefined
+
+  console.log('[Router Guard] Role:', customUser.value?.role)
+
+  if (requiresAuth && !firebaseUser.value) {
+    return next({ name: 'login' })
   }
+
+  if (preventWhenLoggedIn && firebaseUser.value) {
+    return next({ name: 'home' })
+  }
+
+  if (requiredRole || allowedRoles) {
+    const role = customUser.value?.role
+    const hasAccess =
+      (!!requiredRole &&
+        role !== undefined &&
+        hasMinimumRole(role, requiredRole)) ||
+      (!!allowedRoles && role !== undefined && canAccess(role, allowedRoles))
+
+    if (!hasAccess) return next({ name: 'home' }) // or 403 page
+  }
+
+  next()
 })
 
 export default router

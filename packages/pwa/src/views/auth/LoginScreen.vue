@@ -45,7 +45,7 @@ export default {
     const { login, firebaseUser } = useFirebase()
     const { setLocale } = useLanguage()
     const { replace } = useRouter()
-    const { restoreCustomUser, customUser } = useCustomUser()
+    const { restoreCustomUser, resetCustomUser, customUser } = useCustomUser()
 
     // Logic
     const loginCredentials = ref({
@@ -59,6 +59,7 @@ export default {
       login(loginCredentials.value.email, loginCredentials.value.password)
         .then(() => {
           // During debugging you can leave this out
+          resetCustomUser()
           restoreCustomUser().then(() => {
             if (customUser.value?.locale) {
               setLocale(customUser.value.locale)

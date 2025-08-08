@@ -159,10 +159,13 @@ import useFirebase from '@/composables/useFirebase'
 import useLanguage from '@/composables/useLanguage'
 import { useMutation } from '@vue/apollo-composable'
 import { UPDATE_USER_LOCALE } from '@/graphql/user.mutation'
+import useCustomUser from '@/composables/useCustomUser'
 
 const router = useRouter()
 const { firebaseUser, logout } = useFirebase()
 const isLoggingOut = ref(false)
+
+const { resetCustomUser } = useCustomUser()
 
 const { SUPPORTED_LOCALES, locale, setLocale } = useLanguage()
 const { mutate: updateUserLocaleMutation } = useMutation(UPDATE_USER_LOCALE)
@@ -200,6 +203,7 @@ const handleLogout = async () => {
   try {
     isLoggingOut.value = true
     await logout()
+    resetCustomUser()
     router.push('/auth/login')
   } catch (error) {
     console.error('Error signing out:', error)

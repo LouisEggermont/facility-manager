@@ -17,19 +17,24 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import useFirebase from '@/composables/useFirebase'
+import useCustomUser from '@/composables/useCustomUser'
 
 const { firebaseUser, logout } = useFirebase()
 const { replace } = useRouter()
-
+const { resetCustomUser } = useCustomUser()
 // Fetch the Firebase token for authenticated requests
 firebaseUser.value?.getIdToken().then(token => {
   console.log(`{"Authorization": "Bearer ${token}"}`)
 })
 
 // Logout function to sign the user out and redirect to home page
-const logoutUser = () => {
-  logout().then(() => {
+const logoutUser = async () => {
+  try {
+    await logout()
+    resetCustomUser()
     replace({ path: '/' })
-  })
+  } catch (error) {
+    console.error('Logout failed:', error)
+  }
 }
 </script>

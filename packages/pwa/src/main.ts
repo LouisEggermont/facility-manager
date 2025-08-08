@@ -11,6 +11,7 @@ import { DefaultApolloClient } from '@vue/apollo-composable'
 import useGraphql from './composables/useGraphql'
 import { createI18n } from 'vue-i18n'
 import useCustomUser from './composables/useCustomUser'
+import vRole from './directives/v-role'
 
 // expose the firebase instance globally to get access to it in the console // __firebase.firebaseUser.value.getIdToken().then(token => console.log('Bearer ' + token))
 const firebase = useFirebase()
@@ -60,5 +61,11 @@ const app: VueApp = createApp({
   app.use(i18n)
   app.use(router)
   app.use(ui)
+
+  // Register custom directives
+  app.directive('role', vRole)
+  // Wait until router is ready before mounting
+  await router.isReady()
+
   app.mount('#app')
 })()
